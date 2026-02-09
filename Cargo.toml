@@ -1,0 +1,24 @@
+[package]
+name = "anchor-parser"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anchor-parser-macros = { path = "macros" }
+solana-sdk = "3"
+borsh = "1"
+base64 = "0.22"
+bs58 = "0.5"
+bytemuck = { version = "1", features = ["derive"] }
+
+# Optional: enables fetch_account / fetch_accounts (async)
+solana-client = { version = "3", optional = true }
+
+[features]
+default = []
+client = ["dep:solana-client"]
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt", "macros"] }
+solana-client = { version = "3" }
+solana-system-interface = { version = "3" }
