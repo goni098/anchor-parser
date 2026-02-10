@@ -5,7 +5,7 @@ edition = "2024"
 publish = false
 
 [dependencies]
-anchor-parser = { path = "..", features = ["client"] }
+anchor-parser = { path = "../anchor-parser", features = ["client"] }
 solana-sdk = "3"
 solana-client = "3"
 borsh = "1"

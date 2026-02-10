@@ -1,0 +1,30 @@
+[package]
+name = "anchor-parser"
+version = "0.1.0"
+edition = "2024"
+description = "Generate Rust types and helpers from Anchor IDL JSON files using solana-sdk directly — no anchor-lang dependency"
+license = "MIT"
+repository = "https://github.com/goni098/anchor-parser"
+keywords = ["solana", "anchor", "idl", "parser"]
+categories = ["development-tools", "parsing"]
+readme = "../README.md"
+
+[dependencies]
+anchor-parser-macros = { path = "../macros", version = "0.1.0" }
+solana-sdk = "3"
+borsh = "1"
+base64 = "0.22"
+bs58 = "0.5"
+bytemuck = { version = "1", features = ["derive"] }
+
+# Optional: enables fetch_account / fetch_accounts (async)
+solana-client = { version = "3", optional = true }
+
+[features]
+default = []
+client = ["dep:solana-client"]
+
+[dev-dependencies]
+tokio = { version = "1", features = ["rt", "macros"] }
+solana-client = { version = "3" }
+solana-system-interface = { version = "3" }
