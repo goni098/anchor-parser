@@ -1,3 +1,5 @@
+#![cfg_attr(docsrs, feature(doc_cfg))]
+
 //! # anchor-parser
 //!
 //! Generates Rust types and helpers from Anchor IDL JSON files using `solana-sdk`
@@ -54,6 +56,7 @@ pub use anchor_parser_macros::declare_program;
 // ── Async RPC client (requires "client" feature) ──────────────────────
 
 #[cfg(feature = "client")]
+#[cfg_attr(docsrs, doc(cfg(feature = "client")))]
 pub mod client;
 
 // ── Public trait for account deserialization ───────────────────────────

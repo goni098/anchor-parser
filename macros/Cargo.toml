@@ -1,12 +1,15 @@
 [package]
 name = "anchor-parser-macros"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 description = "Internal proc-macro implementation detail of anchor-parser. Do not use directly."
 license = "MIT"
 repository = "https://github.com/goni098/anchor-parser"
 keywords = ["solana", "anchor", "idl", "proc-macro"]
 categories = ["development-tools", "parsing"]
+
+[package.metadata.docs.rs]
+all-features = true
 
 [lib]
 proc-macro = true

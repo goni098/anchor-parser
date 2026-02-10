@@ -107,7 +107,7 @@ dependencies = [
 
 [[package]]
 name = "anchor-parser"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anchor-parser-macros",
  "base64 0.22.1",
@@ -134,7 +134,7 @@ dependencies = [
 
 [[package]]
 name = "anchor-parser-macros"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "bs58",
  "heck",
