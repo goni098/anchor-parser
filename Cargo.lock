@@ -121,6 +121,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "anchor-parser-example"
+version = "0.1.0"
+dependencies = [
+ "anchor-parser",
+ "borsh",
+ "bytemuck",
+ "solana-client",
+ "solana-sdk",
+ "tokio",
+]
+
+[[package]]
 name = "anchor-parser-macros"
 version = "0.1.0"
 dependencies = [

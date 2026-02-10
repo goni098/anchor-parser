@@ -1,6 +1,6 @@
 extern crate proc_macro;
 
-mod gen;
+mod codegen;
 mod idl;
 
 use proc_macro::TokenStream;
@@ -25,7 +25,7 @@ use quote::quote;
 #[proc_macro]
 pub fn declare_program(input: TokenStream) -> TokenStream {
     let name = syn::parse_macro_input!(input as syn::Ident);
-    match gen::generate(&name) {
+    match codegen::generate(&name) {
         Ok(tokens) => tokens.into(),
         Err(err) => {
             let msg = err.to_string();

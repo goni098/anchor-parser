@@ -1,7 +1,12 @@
 [package]
 name = "anchor-parser-macros"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
+description = "Proc-macro companion for anchor-parser — generates Rust types from Anchor IDL JSON"
+license = "MIT"
+repository = "https://github.com/goni/anchor-parser"
+keywords = ["solana", "anchor", "idl", "proc-macro"]
+categories = ["development-tools", "parsing"]
 
 [lib]
 proc-macro = true
