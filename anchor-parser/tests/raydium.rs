@@ -646,19 +646,38 @@ mod tests {
         assert!(Event::from_logs(&logs).is_empty());
     }
 
-
-    fn assert_ix(actual: &solana_sdk::instruction::Instruction, expect: &solana_sdk::instruction::Instruction) {
+    fn assert_ix(
+        actual: &solana_sdk::instruction::Instruction,
+        expect: &solana_sdk::instruction::Instruction,
+    ) {
         assert_eq!(actual.program_id, expect.program_id, "program_id mismatch");
         assert_eq!(actual.data, expect.data, "data mismatch");
-        assert_eq!(actual.accounts.len(), expect.accounts.len(), "accounts len mismatch");
-        for (i, (g, e)) in actual.accounts.iter().zip(expect.accounts.iter()).enumerate() {
+        assert_eq!(
+            actual.accounts.len(),
+            expect.accounts.len(),
+            "accounts len mismatch"
+        );
+        for (i, (g, e)) in actual
+            .accounts
+            .iter()
+            .zip(expect.accounts.iter())
+            .enumerate()
+        {
             assert_eq!(g.pubkey, e.pubkey, "pubkey mismatch at account[{}]", i);
-            assert_eq!(g.is_signer, e.is_signer, "is_signer mismatch at account[{}]", i);
-            assert_eq!(g.is_writable, e.is_writable, "is_writable mismatch at account[{}]", i);
+            assert_eq!(
+                g.is_signer, e.is_signer,
+                "is_signer mismatch at account[{}]",
+                i
+            );
+            assert_eq!(
+                g.is_writable, e.is_writable,
+                "is_writable mismatch at account[{}]",
+                i
+            );
         }
     }
 
-        // ── Instructions ────────────────────────────────────────────────
+    // ── Instructions ────────────────────────────────────────────────
 
     #[test]
     fn test_close_position_instruction() {
@@ -1510,8 +1529,10 @@ mod tests {
         let mut expected_data: Vec<u8> = vec![135, 128, 47, 77, 15, 152, 240, 49];
         borsh::BorshSerialize::serialize(&tick_lower_index, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&tick_upper_index, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&tick_array_lower_start_index, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&tick_array_upper_start_index, &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&tick_array_lower_start_index, &mut expected_data)
+            .unwrap();
+        borsh::BorshSerialize::serialize(&tick_array_upper_start_index, &mut expected_data)
+            .unwrap();
         borsh::BorshSerialize::serialize(&liquidity, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&amount_0_max, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&amount_1_max, &mut expected_data).unwrap();
@@ -1621,8 +1642,10 @@ mod tests {
         let mut expected_data: Vec<u8> = vec![77, 184, 74, 214, 112, 86, 241, 199];
         borsh::BorshSerialize::serialize(&tick_lower_index, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&tick_upper_index, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&tick_array_lower_start_index, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&tick_array_upper_start_index, &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&tick_array_lower_start_index, &mut expected_data)
+            .unwrap();
+        borsh::BorshSerialize::serialize(&tick_array_upper_start_index, &mut expected_data)
+            .unwrap();
         borsh::BorshSerialize::serialize(&liquidity, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&amount_0_max, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&amount_1_max, &mut expected_data).unwrap();
@@ -1740,8 +1763,10 @@ mod tests {
         let mut expected_data: Vec<u8> = vec![77, 255, 174, 82, 125, 29, 201, 46];
         borsh::BorshSerialize::serialize(&tick_lower_index, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&tick_upper_index, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&tick_array_lower_start_index, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&tick_array_upper_start_index, &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&tick_array_lower_start_index, &mut expected_data)
+            .unwrap();
+        borsh::BorshSerialize::serialize(&tick_array_upper_start_index, &mut expected_data)
+            .unwrap();
         borsh::BorshSerialize::serialize(&liquidity, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&amount_0_max, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&amount_1_max, &mut expected_data).unwrap();
@@ -2134,10 +2159,7 @@ mod tests {
 
         let gen_ix = instructions::update_amm_config(
             &program_id,
-            &instructions::UpdateAmmConfigAccounts {
-                owner,
-                amm_config,
-            },
+            &instructions::UpdateAmmConfigAccounts { owner, amm_config },
             param,
             value,
         );
@@ -2240,15 +2262,11 @@ mod tests {
 
         let expected_data: Vec<u8> = vec![163, 172, 224, 52, 11, 154, 106, 223];
 
-        let expected_accounts = vec![
-            AccountMeta::new(pool_state, false),
-        ];
+        let expected_accounts = vec![AccountMeta::new(pool_state, false)];
 
         let gen_ix = instructions::update_reward_infos(
             &program_id,
-            &instructions::UpdateRewardInfosAccounts {
-                pool_state,
-            },
+            &instructions::UpdateRewardInfosAccounts { pool_state },
         );
 
         let expected_ix = solana_sdk::instruction::Instruction::new_with_bytes(

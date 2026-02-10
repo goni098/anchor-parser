@@ -1,7 +1,7 @@
 use quote::quote;
 
-use crate::idl::Idl;
 use super::common::gen_type_def;
+use crate::idl::Idl;
 
 /// Generate the `types` module containing non-account, non-event type definitions.
 pub fn gen_types_mod(idl: &Idl) -> proc_macro2::TokenStream {

@@ -388,19 +388,38 @@ mod tests {
         assert!(Event::from_logs(&logs).is_empty());
     }
 
-
-    fn assert_ix(actual: &solana_sdk::instruction::Instruction, expect: &solana_sdk::instruction::Instruction) {
+    fn assert_ix(
+        actual: &solana_sdk::instruction::Instruction,
+        expect: &solana_sdk::instruction::Instruction,
+    ) {
         assert_eq!(actual.program_id, expect.program_id, "program_id mismatch");
         assert_eq!(actual.data, expect.data, "data mismatch");
-        assert_eq!(actual.accounts.len(), expect.accounts.len(), "accounts len mismatch");
-        for (i, (g, e)) in actual.accounts.iter().zip(expect.accounts.iter()).enumerate() {
+        assert_eq!(
+            actual.accounts.len(),
+            expect.accounts.len(),
+            "accounts len mismatch"
+        );
+        for (i, (g, e)) in actual
+            .accounts
+            .iter()
+            .zip(expect.accounts.iter())
+            .enumerate()
+        {
             assert_eq!(g.pubkey, e.pubkey, "pubkey mismatch at account[{}]", i);
-            assert_eq!(g.is_signer, e.is_signer, "is_signer mismatch at account[{}]", i);
-            assert_eq!(g.is_writable, e.is_writable, "is_writable mismatch at account[{}]", i);
+            assert_eq!(
+                g.is_signer, e.is_signer,
+                "is_signer mismatch at account[{}]",
+                i
+            );
+            assert_eq!(
+                g.is_writable, e.is_writable,
+                "is_writable mismatch at account[{}]",
+                i
+            );
         }
     }
 
-        // ── Instructions ────────────────────────────────────────────────
+    // ── Instructions ────────────────────────────────────────────────
 
     #[test]
     fn test_admin_set_creator_instruction() {
@@ -1648,8 +1667,10 @@ mod tests {
         let admin_set_creator_authority = Pubkey::from([7; 32]);
 
         let mut expected_data: Vec<u8> = vec![27, 234, 178, 52, 147, 2, 187, 141];
-        borsh::BorshSerialize::serialize(&initial_virtual_token_reserves, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&initial_virtual_sol_reserves, &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&initial_virtual_token_reserves, &mut expected_data)
+            .unwrap();
+        borsh::BorshSerialize::serialize(&initial_virtual_sol_reserves, &mut expected_data)
+            .unwrap();
         borsh::BorshSerialize::serialize(&initial_real_token_reserves, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&token_total_supply, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&fee_basis_points, &mut expected_data).unwrap();

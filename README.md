@@ -1,5 +1,9 @@
 # anchor-parser
 
+[![Crates.io](https://img.shields.io/crates/v/anchor-parser.svg)](https://crates.io/crates/anchor-parser)
+[![docs.rs](https://docs.rs/anchor-parser/badge.svg)](https://docs.rs/anchor-parser)
+[![MIT License](https://img.shields.io/crates/l/anchor-parser.svg)](https://github.com/goni098/anchor-parser/blob/main/LICENSE)
+
 Generate Rust types and helpers from [Anchor](https://www.anchor-lang.com/) IDL
 JSON files using **solana-sdk** types directly — no `anchor-lang` dependency
 required.
@@ -23,14 +27,14 @@ required.
 
 ```toml
 [dependencies]
-anchor-parser = { path = "." }
+anchor-parser = "0.1.3"
 ```
 
-To enable the async RPC client (`solana-client` dependency):
+To enable the async RPC client ([`solana-client`](https://docs.rs/solana-client) dependency):
 
 ```toml
 [dependencies]
-anchor-parser = { path = ".", features = ["client"] }
+anchor-parser = { version = "0.1.3", features = ["client"] }
 ```
 
 ## Quick start
@@ -79,11 +83,32 @@ let account = MyAccount::from_account_data(&raw_bytes)?;
 
 // Check discriminator
 assert_eq!(MyAccount::DISCRIMINATOR, [/* 8 bytes */]);
+```
 
-// Async fetch (requires "client" feature)
+### Fetch accounts via RPC
+
+> Requires the `client` feature.
+
+Every account type gets `fetch` and `fetch_multiple` methods via the
+`AccountDeserialize` trait:
+
+```rust
+use anchor_parser::AccountDeserialize;
+use my_program::accounts::MyAccount;
+
+// Fetch a single account
+let account = MyAccount::fetch(&rpc, &address).await?;
+
+// Fetch multiple accounts at once
+let accounts = MyAccount::fetch_multiple(&rpc, &[addr1, addr2]).await?;
+```
+
+Or use the standalone functions from the `client` module:
+
+```rust
 use anchor_parser::client;
-let account = client::fetch_account::<MyAccount>(&rpc_client, &address).await?;
-let accounts = client::fetch_accounts::<MyAccount>(&rpc_client, &[addr1, addr2]).await?;
+
+let account = client::fetch_account::<MyAccount>(&rpc, &address).await?;
 ```
 
 ### Events
@@ -187,7 +212,7 @@ To use `from_cpi_logs`, pass the **bs58-encoded inner instruction data** strings
 
 ## IDL compatibility
 
-Supports the Anchor IDL spec **0.1.0** JSON format. The IDL file name
+Supports the Anchor IDL JSON format. The IDL file name
 (without `.json`) becomes the Rust module name.
 
 ## Tests
@@ -196,13 +221,14 @@ Supports the Anchor IDL spec **0.1.0** JSON format. The IDL file name
 cargo test
 ```
 
-The test suite covers three real-world programs:
+The test suite covers four real-world programs (306 tests total):
 
 | Program | IDL | Tests |
 |---------|-----|-------|
-| Pumpfun | `idls/pumpfun.json` | 23 |
-| Meteora DAMM v2 | `idls/meteora_damm_v2.json` | 52 |
-| Raydium CLMM | `idls/raydium_clmm.json` | 44 |
+| Pumpfun | `idls/pumpfun.json` | 47 |
+| Meteora DAMM v2 | `idls/meteora_damm_v2.json` | 83 |
+| Meteora DLMM | `idls/meteora_dlmm.json` | 112 |
+| Raydium CLMM | `idls/raydium_clmm.json` | 64 |
 
 ## License
 

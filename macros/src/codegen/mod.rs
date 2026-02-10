@@ -18,12 +18,9 @@ pub fn generate(name: &syn::Ident) -> Result<proc_macro2::TokenStream, Box<dyn s
     let mod_name = format_ident!("{}", name);
 
     // Decode program address to bytes for Pubkey::new_from_array
-    let address_bytes = bs58::decode(&idl.address).into_vec().map_err(|e| {
-        format!(
-            "Invalid program address '{}' in IDL: {}",
-            idl.address, e
-        )
-    })?;
+    let address_bytes = bs58::decode(&idl.address)
+        .into_vec()
+        .map_err(|e| format!("Invalid program address '{}' in IDL: {}", idl.address, e))?;
     if address_bytes.len() != 32 {
         return Err(format!(
             "Program address must be 32 bytes, got {}",
@@ -63,20 +60,18 @@ pub fn generate(name: &syn::Ident) -> Result<proc_macro2::TokenStream, Box<dyn s
 ///
 /// Walks up from `CARGO_MANIFEST_DIR` looking for `idls/{name}.json`.
 fn load_idl(name: &str) -> Result<Idl, Box<dyn std::error::Error>> {
-    let manifest_dir = std::env::var("CARGO_MANIFEST_DIR").map_err(|_| {
-        "CARGO_MANIFEST_DIR not set. This macro must be invoked during cargo build."
-    })?;
+    let manifest_dir = std::env::var("CARGO_MANIFEST_DIR").map_err(
+        |_| "CARGO_MANIFEST_DIR not set. This macro must be invoked during cargo build.",
+    )?;
 
     let mut dir = PathBuf::from(&manifest_dir);
     loop {
         let idl_path = dir.join("idls").join(format!("{name}.json"));
         if idl_path.exists() {
-            let content = std::fs::read_to_string(&idl_path).map_err(|e| {
-                format!("Failed to read IDL file '{}': {}", idl_path.display(), e)
-            })?;
-            let idl: Idl = serde_json::from_str(&content).map_err(|e| {
-                format!("Failed to parse IDL file '{}': {}", idl_path.display(), e)
-            })?;
+            let content = std::fs::read_to_string(&idl_path)
+                .map_err(|e| format!("Failed to read IDL file '{}': {}", idl_path.display(), e))?;
+            let idl: Idl = serde_json::from_str(&content)
+                .map_err(|e| format!("Failed to parse IDL file '{}': {}", idl_path.display(), e))?;
             return Ok(idl);
         }
         if !dir.pop() {

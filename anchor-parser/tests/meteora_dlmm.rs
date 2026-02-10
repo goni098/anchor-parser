@@ -26,19 +26,28 @@ mod tests {
     #[test]
     fn test_bin_array_bitmap_extension_discriminator() {
         use meteora_dlmm::accounts::BinArrayBitmapExtension;
-        assert_eq!(BinArrayBitmapExtension::DISCRIMINATOR, [80, 111, 124, 113, 55, 237, 18, 5]);
+        assert_eq!(
+            BinArrayBitmapExtension::DISCRIMINATOR,
+            [80, 111, 124, 113, 55, 237, 18, 5]
+        );
     }
 
     #[test]
     fn test_claim_fee_operator_discriminator() {
         use meteora_dlmm::accounts::ClaimFeeOperator;
-        assert_eq!(ClaimFeeOperator::DISCRIMINATOR, [166, 48, 134, 86, 34, 200, 188, 150]);
+        assert_eq!(
+            ClaimFeeOperator::DISCRIMINATOR,
+            [166, 48, 134, 86, 34, 200, 188, 150]
+        );
     }
 
     #[test]
     fn test_dummy_zc_account_discriminator() {
         use meteora_dlmm::accounts::DummyZcAccount;
-        assert_eq!(DummyZcAccount::DISCRIMINATOR, [94, 107, 238, 80, 208, 48, 180, 8]);
+        assert_eq!(
+            DummyZcAccount::DISCRIMINATOR,
+            [94, 107, 238, 80, 208, 48, 180, 8]
+        );
     }
 
     #[test]
@@ -50,43 +59,64 @@ mod tests {
     #[test]
     fn test_operator_discriminator() {
         use meteora_dlmm::accounts::Operator;
-        assert_eq!(Operator::DISCRIMINATOR, [219, 31, 188, 145, 69, 139, 204, 117]);
+        assert_eq!(
+            Operator::DISCRIMINATOR,
+            [219, 31, 188, 145, 69, 139, 204, 117]
+        );
     }
 
     #[test]
     fn test_oracle_discriminator() {
         use meteora_dlmm::accounts::Oracle;
-        assert_eq!(Oracle::DISCRIMINATOR, [139, 194, 131, 179, 140, 179, 229, 244]);
+        assert_eq!(
+            Oracle::DISCRIMINATOR,
+            [139, 194, 131, 179, 140, 179, 229, 244]
+        );
     }
 
     #[test]
     fn test_position_discriminator() {
         use meteora_dlmm::accounts::Position;
-        assert_eq!(Position::DISCRIMINATOR, [170, 188, 143, 228, 122, 64, 247, 208]);
+        assert_eq!(
+            Position::DISCRIMINATOR,
+            [170, 188, 143, 228, 122, 64, 247, 208]
+        );
     }
 
     #[test]
     fn test_position_v2_discriminator() {
         use meteora_dlmm::accounts::PositionV2;
-        assert_eq!(PositionV2::DISCRIMINATOR, [117, 176, 212, 199, 245, 180, 133, 182]);
+        assert_eq!(
+            PositionV2::DISCRIMINATOR,
+            [117, 176, 212, 199, 245, 180, 133, 182]
+        );
     }
 
     #[test]
     fn test_preset_parameter_discriminator() {
         use meteora_dlmm::accounts::PresetParameter;
-        assert_eq!(PresetParameter::DISCRIMINATOR, [242, 62, 244, 34, 181, 112, 58, 170]);
+        assert_eq!(
+            PresetParameter::DISCRIMINATOR,
+            [242, 62, 244, 34, 181, 112, 58, 170]
+        );
     }
 
     #[test]
     fn test_preset_parameter2_discriminator() {
         use meteora_dlmm::accounts::PresetParameter2;
-        assert_eq!(PresetParameter2::DISCRIMINATOR, [171, 236, 148, 115, 162, 113, 222, 174]);
+        assert_eq!(
+            PresetParameter2::DISCRIMINATOR,
+            [171, 236, 148, 115, 162, 113, 222, 174]
+        );
     }
 
     #[test]
     fn test_token_badge_discriminator() {
         use meteora_dlmm::accounts::TokenBadge;
-        assert_eq!(TokenBadge::DISCRIMINATOR, [116, 219, 204, 229, 249, 116, 255, 150]);
+        assert_eq!(
+            TokenBadge::DISCRIMINATOR,
+            [116, 219, 204, 229, 249, 116, 255, 150]
+        );
     }
 
     // ── Event discriminators ────────────────────────────────────────
@@ -94,115 +124,172 @@ mod tests {
     #[test]
     fn test_add_liquidity_event_discriminator() {
         use meteora_dlmm::events::AddLiquidity;
-        assert_eq!(AddLiquidity::DISCRIMINATOR, [31, 94, 125, 90, 227, 52, 61, 186]);
+        assert_eq!(
+            AddLiquidity::DISCRIMINATOR,
+            [31, 94, 125, 90, 227, 52, 61, 186]
+        );
     }
 
     #[test]
     fn test_claim_fee_event_discriminator() {
         use meteora_dlmm::events::ClaimFee;
-        assert_eq!(ClaimFee::DISCRIMINATOR, [75, 122, 154, 48, 140, 74, 123, 163]);
+        assert_eq!(
+            ClaimFee::DISCRIMINATOR,
+            [75, 122, 154, 48, 140, 74, 123, 163]
+        );
     }
 
     #[test]
     fn test_claim_fee2_event_discriminator() {
         use meteora_dlmm::events::ClaimFee2;
-        assert_eq!(ClaimFee2::DISCRIMINATOR, [232, 171, 242, 97, 58, 77, 35, 45]);
+        assert_eq!(
+            ClaimFee2::DISCRIMINATOR,
+            [232, 171, 242, 97, 58, 77, 35, 45]
+        );
     }
 
     #[test]
     fn test_claim_reward_event_discriminator() {
         use meteora_dlmm::events::ClaimReward;
-        assert_eq!(ClaimReward::DISCRIMINATOR, [148, 116, 134, 204, 22, 171, 85, 95]);
+        assert_eq!(
+            ClaimReward::DISCRIMINATOR,
+            [148, 116, 134, 204, 22, 171, 85, 95]
+        );
     }
 
     #[test]
     fn test_claim_reward2_event_discriminator() {
         use meteora_dlmm::events::ClaimReward2;
-        assert_eq!(ClaimReward2::DISCRIMINATOR, [27, 143, 244, 33, 80, 43, 110, 146]);
+        assert_eq!(
+            ClaimReward2::DISCRIMINATOR,
+            [27, 143, 244, 33, 80, 43, 110, 146]
+        );
     }
 
     #[test]
     fn test_composition_fee_event_discriminator() {
         use meteora_dlmm::events::CompositionFee;
-        assert_eq!(CompositionFee::DISCRIMINATOR, [128, 151, 123, 106, 17, 102, 113, 142]);
+        assert_eq!(
+            CompositionFee::DISCRIMINATOR,
+            [128, 151, 123, 106, 17, 102, 113, 142]
+        );
     }
 
     #[test]
     fn test_decrease_position_length_event_discriminator() {
         use meteora_dlmm::events::DecreasePositionLength;
-        assert_eq!(DecreasePositionLength::DISCRIMINATOR, [52, 118, 235, 85, 172, 169, 15, 128]);
+        assert_eq!(
+            DecreasePositionLength::DISCRIMINATOR,
+            [52, 118, 235, 85, 172, 169, 15, 128]
+        );
     }
 
     #[test]
     fn test_dynamic_fee_parameter_update_event_discriminator() {
         use meteora_dlmm::events::DynamicFeeParameterUpdate;
-        assert_eq!(DynamicFeeParameterUpdate::DISCRIMINATOR, [88, 88, 178, 135, 194, 146, 91, 243]);
+        assert_eq!(
+            DynamicFeeParameterUpdate::DISCRIMINATOR,
+            [88, 88, 178, 135, 194, 146, 91, 243]
+        );
     }
 
     #[test]
     fn test_fee_parameter_update_event_discriminator() {
         use meteora_dlmm::events::FeeParameterUpdate;
-        assert_eq!(FeeParameterUpdate::DISCRIMINATOR, [48, 76, 241, 117, 144, 215, 242, 44]);
+        assert_eq!(
+            FeeParameterUpdate::DISCRIMINATOR,
+            [48, 76, 241, 117, 144, 215, 242, 44]
+        );
     }
 
     #[test]
     fn test_fund_reward_event_discriminator() {
         use meteora_dlmm::events::FundReward;
-        assert_eq!(FundReward::DISCRIMINATOR, [246, 228, 58, 130, 145, 170, 79, 204]);
+        assert_eq!(
+            FundReward::DISCRIMINATOR,
+            [246, 228, 58, 130, 145, 170, 79, 204]
+        );
     }
 
     #[test]
     fn test_go_to_a_bin_event_discriminator() {
         use meteora_dlmm::events::GoToABin;
-        assert_eq!(GoToABin::DISCRIMINATOR, [59, 138, 76, 68, 138, 131, 176, 67]);
+        assert_eq!(
+            GoToABin::DISCRIMINATOR,
+            [59, 138, 76, 68, 138, 131, 176, 67]
+        );
     }
 
     #[test]
     fn test_increase_observation_event_discriminator() {
         use meteora_dlmm::events::IncreaseObservation;
-        assert_eq!(IncreaseObservation::DISCRIMINATOR, [99, 249, 17, 121, 166, 156, 207, 215]);
+        assert_eq!(
+            IncreaseObservation::DISCRIMINATOR,
+            [99, 249, 17, 121, 166, 156, 207, 215]
+        );
     }
 
     #[test]
     fn test_increase_position_length_event_discriminator() {
         use meteora_dlmm::events::IncreasePositionLength;
-        assert_eq!(IncreasePositionLength::DISCRIMINATOR, [157, 239, 42, 204, 30, 56, 223, 46]);
+        assert_eq!(
+            IncreasePositionLength::DISCRIMINATOR,
+            [157, 239, 42, 204, 30, 56, 223, 46]
+        );
     }
 
     #[test]
     fn test_initialize_reward_event_discriminator() {
         use meteora_dlmm::events::InitializeReward;
-        assert_eq!(InitializeReward::DISCRIMINATOR, [211, 153, 88, 62, 149, 60, 177, 70]);
+        assert_eq!(
+            InitializeReward::DISCRIMINATOR,
+            [211, 153, 88, 62, 149, 60, 177, 70]
+        );
     }
 
     #[test]
     fn test_lb_pair_create_event_discriminator() {
         use meteora_dlmm::events::LbPairCreate;
-        assert_eq!(LbPairCreate::DISCRIMINATOR, [185, 74, 252, 125, 27, 215, 188, 111]);
+        assert_eq!(
+            LbPairCreate::DISCRIMINATOR,
+            [185, 74, 252, 125, 27, 215, 188, 111]
+        );
     }
 
     #[test]
     fn test_position_close_event_discriminator() {
         use meteora_dlmm::events::PositionClose;
-        assert_eq!(PositionClose::DISCRIMINATOR, [255, 196, 16, 107, 28, 202, 53, 128]);
+        assert_eq!(
+            PositionClose::DISCRIMINATOR,
+            [255, 196, 16, 107, 28, 202, 53, 128]
+        );
     }
 
     #[test]
     fn test_position_create_event_discriminator() {
         use meteora_dlmm::events::PositionCreate;
-        assert_eq!(PositionCreate::DISCRIMINATOR, [144, 142, 252, 84, 157, 53, 37, 121]);
+        assert_eq!(
+            PositionCreate::DISCRIMINATOR,
+            [144, 142, 252, 84, 157, 53, 37, 121]
+        );
     }
 
     #[test]
     fn test_rebalancing_event_discriminator() {
         use meteora_dlmm::events::Rebalancing;
-        assert_eq!(Rebalancing::DISCRIMINATOR, [0, 109, 117, 179, 61, 91, 199, 200]);
+        assert_eq!(
+            Rebalancing::DISCRIMINATOR,
+            [0, 109, 117, 179, 61, 91, 199, 200]
+        );
     }
 
     #[test]
     fn test_remove_liquidity_event_discriminator() {
         use meteora_dlmm::events::RemoveLiquidity;
-        assert_eq!(RemoveLiquidity::DISCRIMINATOR, [116, 244, 97, 232, 103, 31, 152, 58]);
+        assert_eq!(
+            RemoveLiquidity::DISCRIMINATOR,
+            [116, 244, 97, 232, 103, 31, 152, 58]
+        );
     }
 
     #[test]
@@ -214,41 +301,76 @@ mod tests {
     #[test]
     fn test_update_position_lock_release_point_event_discriminator() {
         use meteora_dlmm::events::UpdatePositionLockReleasePoint;
-        assert_eq!(UpdatePositionLockReleasePoint::DISCRIMINATOR, [133, 214, 66, 224, 64, 12, 7, 191]);
+        assert_eq!(
+            UpdatePositionLockReleasePoint::DISCRIMINATOR,
+            [133, 214, 66, 224, 64, 12, 7, 191]
+        );
     }
 
     #[test]
     fn test_update_position_operator_event_discriminator() {
         use meteora_dlmm::events::UpdatePositionOperator;
-        assert_eq!(UpdatePositionOperator::DISCRIMINATOR, [39, 115, 48, 204, 246, 47, 66, 57]);
+        assert_eq!(
+            UpdatePositionOperator::DISCRIMINATOR,
+            [39, 115, 48, 204, 246, 47, 66, 57]
+        );
     }
 
     #[test]
     fn test_update_reward_duration_event_discriminator() {
         use meteora_dlmm::events::UpdateRewardDuration;
-        assert_eq!(UpdateRewardDuration::DISCRIMINATOR, [223, 245, 224, 153, 49, 29, 163, 172]);
+        assert_eq!(
+            UpdateRewardDuration::DISCRIMINATOR,
+            [223, 245, 224, 153, 49, 29, 163, 172]
+        );
     }
 
     #[test]
     fn test_update_reward_funder_event_discriminator() {
         use meteora_dlmm::events::UpdateRewardFunder;
-        assert_eq!(UpdateRewardFunder::DISCRIMINATOR, [224, 178, 174, 74, 252, 165, 85, 180]);
+        assert_eq!(
+            UpdateRewardFunder::DISCRIMINATOR,
+            [224, 178, 174, 74, 252, 165, 85, 180]
+        );
     }
 
     #[test]
     fn test_withdraw_ineligible_reward_event_discriminator() {
         use meteora_dlmm::events::WithdrawIneligibleReward;
-        assert_eq!(WithdrawIneligibleReward::DISCRIMINATOR, [231, 189, 65, 149, 102, 215, 154, 244]);
+        assert_eq!(
+            WithdrawIneligibleReward::DISCRIMINATOR,
+            [231, 189, 65, 149, 102, 215, 154, 244]
+        );
     }
 
-    fn assert_ix(actual: &solana_sdk::instruction::Instruction, expect: &solana_sdk::instruction::Instruction) {
+    fn assert_ix(
+        actual: &solana_sdk::instruction::Instruction,
+        expect: &solana_sdk::instruction::Instruction,
+    ) {
         assert_eq!(actual.program_id, expect.program_id, "program_id mismatch");
         assert_eq!(actual.data, expect.data, "data mismatch");
-        assert_eq!(actual.accounts.len(), expect.accounts.len(), "accounts len mismatch");
-        for (i, (g, e)) in actual.accounts.iter().zip(expect.accounts.iter()).enumerate() {
+        assert_eq!(
+            actual.accounts.len(),
+            expect.accounts.len(),
+            "accounts len mismatch"
+        );
+        for (i, (g, e)) in actual
+            .accounts
+            .iter()
+            .zip(expect.accounts.iter())
+            .enumerate()
+        {
             assert_eq!(g.pubkey, e.pubkey, "pubkey mismatch at account[{}]", i);
-            assert_eq!(g.is_signer, e.is_signer, "is_signer mismatch at account[{}]", i);
-            assert_eq!(g.is_writable, e.is_writable, "is_writable mismatch at account[{}]", i);
+            assert_eq!(
+                g.is_signer, e.is_signer,
+                "is_signer mismatch at account[{}]",
+                i
+            );
+            assert_eq!(
+                g.is_writable, e.is_writable,
+                "is_writable mismatch at account[{}]",
+                i
+            );
         }
     }
 
@@ -277,7 +399,11 @@ mod tests {
         let token_y_program = Pubkey::from([13; 32]);
         let event_authority = Pubkey::from([14; 32]);
         let program = Pubkey::from([15; 32]);
-        let liquidity_parameter = types::LiquidityParameter { amount_x: 0u64, amount_y: 0u64, bin_liquidity_dist: vec![] };
+        let liquidity_parameter = types::LiquidityParameter {
+            amount_x: 0u64,
+            amount_y: 0u64,
+            bin_liquidity_dist: vec![],
+        };
 
         let mut expected_data: Vec<u8> = vec![181, 157, 89, 67, 143, 182, 52, 72];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
@@ -353,12 +479,17 @@ mod tests {
         let token_y_program = Pubkey::from([11; 32]);
         let event_authority = Pubkey::from([12; 32]);
         let program = Pubkey::from([13; 32]);
-        let liquidity_parameter = types::LiquidityParameter { amount_x: 0u64, amount_y: 0u64, bin_liquidity_dist: vec![] };
+        let liquidity_parameter = types::LiquidityParameter {
+            amount_x: 0u64,
+            amount_y: 0u64,
+            bin_liquidity_dist: vec![],
+        };
         let remaining_accounts_info = types::RemainingAccountsInfo { slices: vec![] };
 
         let mut expected_data: Vec<u8> = vec![228, 162, 78, 28, 70, 219, 116, 115];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(position, false),
@@ -430,7 +561,18 @@ mod tests {
         let token_y_program = Pubkey::from([13; 32]);
         let event_authority = Pubkey::from([14; 32]);
         let program = Pubkey::from([15; 32]);
-        let liquidity_parameter = types::LiquidityParameterByStrategy { amount_x: 0u64, amount_y: 0u64, active_id: 0i32, max_active_bin_slippage: 0i32, strategy_parameters: types::StrategyParameters { min_bin_id: 0i32, max_bin_id: 0i32, strategy_type: types::StrategyType::SpotOneSide, parameteres: [0u8; 64] } };
+        let liquidity_parameter = types::LiquidityParameterByStrategy {
+            amount_x: 0u64,
+            amount_y: 0u64,
+            active_id: 0i32,
+            max_active_bin_slippage: 0i32,
+            strategy_parameters: types::StrategyParameters {
+                min_bin_id: 0i32,
+                max_bin_id: 0i32,
+                strategy_type: types::StrategyType::SpotOneSide,
+                parameteres: [0u8; 64],
+            },
+        };
 
         let mut expected_data: Vec<u8> = vec![7, 3, 150, 127, 148, 40, 61, 200];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
@@ -506,12 +648,24 @@ mod tests {
         let token_y_program = Pubkey::from([11; 32]);
         let event_authority = Pubkey::from([12; 32]);
         let program = Pubkey::from([13; 32]);
-        let liquidity_parameter = types::LiquidityParameterByStrategy { amount_x: 0u64, amount_y: 0u64, active_id: 0i32, max_active_bin_slippage: 0i32, strategy_parameters: types::StrategyParameters { min_bin_id: 0i32, max_bin_id: 0i32, strategy_type: types::StrategyType::SpotOneSide, parameteres: [0u8; 64] } };
+        let liquidity_parameter = types::LiquidityParameterByStrategy {
+            amount_x: 0u64,
+            amount_y: 0u64,
+            active_id: 0i32,
+            max_active_bin_slippage: 0i32,
+            strategy_parameters: types::StrategyParameters {
+                min_bin_id: 0i32,
+                max_bin_id: 0i32,
+                strategy_type: types::StrategyType::SpotOneSide,
+                parameteres: [0u8; 64],
+            },
+        };
         let remaining_accounts_info = types::RemainingAccountsInfo { slices: vec![] };
 
         let mut expected_data: Vec<u8> = vec![3, 221, 149, 218, 111, 141, 118, 213];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(position, false),
@@ -579,7 +733,17 @@ mod tests {
         let token_program = Pubkey::from([9; 32]);
         let event_authority = Pubkey::from([10; 32]);
         let program = Pubkey::from([11; 32]);
-        let liquidity_parameter = types::LiquidityParameterByStrategyOneSide { amount: 0u64, active_id: 0i32, max_active_bin_slippage: 0i32, strategy_parameters: types::StrategyParameters { min_bin_id: 0i32, max_bin_id: 0i32, strategy_type: types::StrategyType::SpotOneSide, parameteres: [0u8; 64] } };
+        let liquidity_parameter = types::LiquidityParameterByStrategyOneSide {
+            amount: 0u64,
+            active_id: 0i32,
+            max_active_bin_slippage: 0i32,
+            strategy_parameters: types::StrategyParameters {
+                min_bin_id: 0i32,
+                max_bin_id: 0i32,
+                strategy_type: types::StrategyType::SpotOneSide,
+                parameteres: [0u8; 64],
+            },
+        };
 
         let mut expected_data: Vec<u8> = vec![41, 5, 238, 175, 100, 225, 6, 205];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
@@ -649,7 +813,13 @@ mod tests {
         let token_y_program = Pubkey::from([13; 32]);
         let event_authority = Pubkey::from([14; 32]);
         let program = Pubkey::from([15; 32]);
-        let liquidity_parameter = types::LiquidityParameterByWeight { amount_x: 0u64, amount_y: 0u64, active_id: 0i32, max_active_bin_slippage: 0i32, bin_liquidity_dist: vec![] };
+        let liquidity_parameter = types::LiquidityParameterByWeight {
+            amount_x: 0u64,
+            amount_y: 0u64,
+            active_id: 0i32,
+            max_active_bin_slippage: 0i32,
+            bin_liquidity_dist: vec![],
+        };
 
         let mut expected_data: Vec<u8> = vec![28, 140, 238, 99, 231, 162, 21, 149];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
@@ -723,7 +893,12 @@ mod tests {
         let token_program = Pubkey::from([9; 32]);
         let event_authority = Pubkey::from([10; 32]);
         let program = Pubkey::from([11; 32]);
-        let liquidity_parameter = types::LiquidityOneSideParameter { amount: 0u64, active_id: 0i32, max_active_bin_slippage: 0i32, bin_liquidity_dist: vec![] };
+        let liquidity_parameter = types::LiquidityOneSideParameter {
+            amount: 0u64,
+            active_id: 0i32,
+            max_active_bin_slippage: 0i32,
+            bin_liquidity_dist: vec![],
+        };
 
         let mut expected_data: Vec<u8> = vec![94, 155, 103, 151, 70, 95, 220, 165];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
@@ -789,7 +964,10 @@ mod tests {
         let token_program = Pubkey::from([9; 32]);
         let event_authority = Pubkey::from([10; 32]);
         let program = Pubkey::from([11; 32]);
-        let parameter = types::AddLiquiditySingleSidePreciseParameter { bins: vec![], decompress_multiplier: 0u64 };
+        let parameter = types::AddLiquiditySingleSidePreciseParameter {
+            bins: vec![],
+            decompress_multiplier: 0u64,
+        };
 
         let mut expected_data: Vec<u8> = vec![161, 194, 103, 84, 171, 71, 250, 154];
         borsh::BorshSerialize::serialize(&parameter.clone(), &mut expected_data).unwrap();
@@ -853,12 +1031,17 @@ mod tests {
         let token_program = Pubkey::from([7; 32]);
         let event_authority = Pubkey::from([8; 32]);
         let program = Pubkey::from([9; 32]);
-        let liquidity_parameter = types::AddLiquiditySingleSidePreciseParameter2 { bins: vec![], decompress_multiplier: 0u64, max_amount: 0u64 };
+        let liquidity_parameter = types::AddLiquiditySingleSidePreciseParameter2 {
+            bins: vec![],
+            decompress_multiplier: 0u64,
+            max_amount: 0u64,
+        };
         let remaining_accounts_info = types::RemainingAccountsInfo { slices: vec![] };
 
         let mut expected_data: Vec<u8> = vec![33, 51, 163, 201, 117, 98, 125, 231];
         borsh::BorshSerialize::serialize(&liquidity_parameter.clone(), &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(position, false),
@@ -998,7 +1181,8 @@ mod tests {
         let mut expected_data: Vec<u8> = vec![112, 191, 101, 171, 28, 144, 127, 187];
         borsh::BorshSerialize::serialize(&min_bin_id, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&max_bin_id, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -1139,7 +1323,8 @@ mod tests {
         borsh::BorshSerialize::serialize(&reward_index, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&min_bin_id, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&max_bin_id, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -1621,20 +1806,23 @@ mod tests {
 
         let program_id = meteora_dlmm::ID;
         let dummy_zc_account = Pubkey::from([1; 32]);
-        let _ix = types::DummyIx { _pair_status: types::PairStatus::Enabled, _pair_type: types::PairType::Permissionless, _activation_type: types::ActivationType::Slot, _token_program_flag: types::TokenProgramFlags::TokenProgram, _resize_side: types::ResizeSide::Lower, _rounding: types::Rounding::Up };
+        let _ix = types::DummyIx {
+            _pair_status: types::PairStatus::Enabled,
+            _pair_type: types::PairType::Permissionless,
+            _activation_type: types::ActivationType::Slot,
+            _token_program_flag: types::TokenProgramFlags::TokenProgram,
+            _resize_side: types::ResizeSide::Lower,
+            _rounding: types::Rounding::Up,
+        };
 
         let mut expected_data: Vec<u8> = vec![180, 105, 69, 80, 95, 50, 73, 108];
         borsh::BorshSerialize::serialize(&_ix.clone(), &mut expected_data).unwrap();
 
-        let expected_accounts = vec![
-            AccountMeta::new_readonly(dummy_zc_account, false),
-        ];
+        let expected_accounts = vec![AccountMeta::new_readonly(dummy_zc_account, false)];
 
         let gen_ix = instructions::for_idl_type_generation_do_not_call(
             &program_id,
-            &instructions::ForIdlTypeGenerationDoNotCallAccounts {
-                dummy_zc_account,
-            },
+            &instructions::ForIdlTypeGenerationDoNotCallAccounts { dummy_zc_account },
             _ix.clone(),
         );
 
@@ -1672,7 +1860,8 @@ mod tests {
         borsh::BorshSerialize::serialize(&reward_index, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&amount, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&carry_forward, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -2019,7 +2208,18 @@ mod tests {
         let user_token_y = Pubkey::from([11; 32]);
         let event_authority = Pubkey::from([12; 32]);
         let program = Pubkey::from([13; 32]);
-        let params = types::CustomizableParams { active_id: 0i32, bin_step: 0u16, base_factor: 0u16, activation_type: 0u8, has_alpha_vault: false, activation_point: None, creator_pool_on_off_control: false, base_fee_power_factor: 0u8, function_type: 0u8, padding: [0u8; 61] };
+        let params = types::CustomizableParams {
+            active_id: 0i32,
+            bin_step: 0u16,
+            base_factor: 0u16,
+            activation_type: 0u8,
+            has_alpha_vault: false,
+            activation_point: None,
+            creator_pool_on_off_control: false,
+            base_fee_power_factor: 0u8,
+            function_type: 0u8,
+            padding: [0u8; 61],
+        };
 
         let mut expected_data: Vec<u8> = vec![46, 39, 41, 135, 111, 183, 200, 64];
         borsh::BorshSerialize::serialize(&params.clone(), &mut expected_data).unwrap();
@@ -2092,7 +2292,18 @@ mod tests {
         let user_token_y = Pubkey::from([12; 32]);
         let event_authority = Pubkey::from([13; 32]);
         let program = Pubkey::from([14; 32]);
-        let params = types::CustomizableParams { active_id: 0i32, bin_step: 0u16, base_factor: 0u16, activation_type: 0u8, has_alpha_vault: false, activation_point: None, creator_pool_on_off_control: false, base_fee_power_factor: 0u8, function_type: 0u8, padding: [0u8; 61] };
+        let params = types::CustomizableParams {
+            active_id: 0i32,
+            bin_step: 0u16,
+            base_factor: 0u16,
+            activation_type: 0u8,
+            has_alpha_vault: false,
+            activation_point: None,
+            creator_pool_on_off_control: false,
+            base_fee_power_factor: 0u8,
+            function_type: 0u8,
+            padding: [0u8; 61],
+        };
 
         let mut expected_data: Vec<u8> = vec![243, 73, 129, 126, 51, 19, 241, 107];
         borsh::BorshSerialize::serialize(&params.clone(), &mut expected_data).unwrap();
@@ -2245,7 +2456,10 @@ mod tests {
         let system_program = Pubkey::from([11; 32]);
         let event_authority = Pubkey::from([12; 32]);
         let program = Pubkey::from([13; 32]);
-        let params = types::InitializeLbPair2Params { active_id: 0i32, padding: [0u8; 96] };
+        let params = types::InitializeLbPair2Params {
+            active_id: 0i32,
+            padding: [0u8; 96],
+        };
 
         let mut expected_data: Vec<u8> = vec![73, 59, 36, 120, 237, 83, 108, 198];
         borsh::BorshSerialize::serialize(&params.clone(), &mut expected_data).unwrap();
@@ -2323,7 +2537,14 @@ mod tests {
         let system_program = Pubkey::from([13; 32]);
         let event_authority = Pubkey::from([14; 32]);
         let program = Pubkey::from([15; 32]);
-        let ix_data = types::InitPermissionPairIx { active_id: 0i32, bin_step: 0u16, base_factor: 0u16, base_fee_power_factor: 0u8, activation_type: 0u8, protocol_share: 0u16 };
+        let ix_data = types::InitPermissionPairIx {
+            active_id: 0i32,
+            bin_step: 0u16,
+            base_factor: 0u16,
+            base_fee_power_factor: 0u8,
+            activation_type: 0u8,
+            protocol_share: 0u16,
+        };
 
         let mut expected_data: Vec<u8> = vec![108, 102, 213, 85, 251, 3, 53, 21];
         borsh::BorshSerialize::serialize(&ix_data.clone(), &mut expected_data).unwrap();
@@ -2642,7 +2863,19 @@ mod tests {
         let signer = Pubkey::from([3; 32]);
         let payer = Pubkey::from([4; 32]);
         let system_program = Pubkey::from([5; 32]);
-        let ix = types::InitPresetParametersIx { index: 0u16, bin_step: 0u16, base_factor: 0u16, filter_period: 0u16, decay_period: 0u16, reduction_factor: 0u16, variable_fee_control: 0u32, max_volatility_accumulator: 0u32, protocol_share: 0u16, base_fee_power_factor: 0u8, function_type: 0u8 };
+        let ix = types::InitPresetParametersIx {
+            index: 0u16,
+            bin_step: 0u16,
+            base_factor: 0u16,
+            filter_period: 0u16,
+            decay_period: 0u16,
+            reduction_factor: 0u16,
+            variable_fee_control: 0u32,
+            max_volatility_accumulator: 0u32,
+            protocol_share: 0u16,
+            base_fee_power_factor: 0u8,
+            function_type: 0u8,
+        };
 
         let mut expected_data: Vec<u8> = vec![66, 188, 71, 211, 98, 109, 14, 186];
         borsh::BorshSerialize::serialize(&ix.clone(), &mut expected_data).unwrap();
@@ -2872,12 +3105,26 @@ mod tests {
         let system_program = Pubkey::from([14; 32]);
         let event_authority = Pubkey::from([15; 32]);
         let program = Pubkey::from([16; 32]);
-        let params = types::RebalanceLiquidityParams { active_id: 0i32, max_active_bin_slippage: 0u16, should_claim_fee: false, should_claim_reward: false, min_withdraw_x_amount: 0u64, max_deposit_x_amount: 0u64, min_withdraw_y_amount: 0u64, max_deposit_y_amount: 0u64, shrink_mode: 0u8, padding: [0u8; 31], removes: vec![], adds: vec![] };
+        let params = types::RebalanceLiquidityParams {
+            active_id: 0i32,
+            max_active_bin_slippage: 0u16,
+            should_claim_fee: false,
+            should_claim_reward: false,
+            min_withdraw_x_amount: 0u64,
+            max_deposit_x_amount: 0u64,
+            min_withdraw_y_amount: 0u64,
+            max_deposit_y_amount: 0u64,
+            shrink_mode: 0u8,
+            padding: [0u8; 31],
+            removes: vec![],
+            adds: vec![],
+        };
         let remaining_accounts_info = types::RemainingAccountsInfo { slices: vec![] };
 
         let mut expected_data: Vec<u8> = vec![92, 4, 176, 193, 119, 185, 83, 9];
         borsh::BorshSerialize::serialize(&params.clone(), &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(position, false),
@@ -3033,7 +3280,8 @@ mod tests {
         let bin_liquidity_removal = vec![];
 
         let mut expected_data: Vec<u8> = vec![80, 85, 209, 72, 24, 206, 177, 108];
-        borsh::BorshSerialize::serialize(&bin_liquidity_removal.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&bin_liquidity_removal.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(position, false),
@@ -3111,8 +3359,10 @@ mod tests {
         let remaining_accounts_info = types::RemainingAccountsInfo { slices: vec![] };
 
         let mut expected_data: Vec<u8> = vec![230, 215, 82, 127, 241, 101, 227, 146];
-        borsh::BorshSerialize::serialize(&bin_liquidity_removal.clone(), &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&bin_liquidity_removal.clone(), &mut expected_data)
+            .unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(position, false),
@@ -3278,7 +3528,8 @@ mod tests {
         borsh::BorshSerialize::serialize(&from_bin_id, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&to_bin_id, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&bps_to_remove, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(position, false),
@@ -3467,10 +3718,7 @@ mod tests {
 
         let gen_ix = instructions::set_activation_point(
             &program_id,
-            &instructions::SetActivationPointAccounts {
-                lb_pair,
-                signer,
-            },
+            &instructions::SetActivationPointAccounts { lb_pair, signer },
             activation_point,
         );
 
@@ -3544,10 +3792,7 @@ mod tests {
 
         let gen_ix = instructions::set_pair_status_permissionless(
             &program_id,
-            &instructions::SetPairStatusPermissionlessAccounts {
-                lb_pair,
-                signer,
-            },
+            &instructions::SetPairStatusPermissionlessAccounts { lb_pair, signer },
             status,
         );
 
@@ -3581,10 +3826,7 @@ mod tests {
 
         let gen_ix = instructions::set_pre_activation_duration(
             &program_id,
-            &instructions::SetPreActivationDurationAccounts {
-                lb_pair,
-                signer,
-            },
+            &instructions::SetPreActivationDurationAccounts { lb_pair, signer },
             pre_activation_duration,
         );
 
@@ -3618,10 +3860,7 @@ mod tests {
 
         let gen_ix = instructions::set_pre_activation_swap_address(
             &program_id,
-            &instructions::SetPreActivationSwapAddressAccounts {
-                lb_pair,
-                signer,
-            },
+            &instructions::SetPreActivationSwapAddressAccounts { lb_pair, signer },
             pre_activation_swap_address,
         );
 
@@ -3739,7 +3978,8 @@ mod tests {
         let mut expected_data: Vec<u8> = vec![65, 75, 63, 76, 235, 91, 91, 136];
         borsh::BorshSerialize::serialize(&amount_in, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&min_amount_out, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -3899,7 +4139,8 @@ mod tests {
         let mut expected_data: Vec<u8> = vec![43, 215, 247, 132, 137, 60, 243, 81];
         borsh::BorshSerialize::serialize(&max_in_amount, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&out_amount, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -4064,7 +4305,8 @@ mod tests {
         borsh::BorshSerialize::serialize(&amount_in, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&active_id, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&max_price_impact_bps, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -4132,7 +4374,11 @@ mod tests {
         let signer = Pubkey::from([3; 32]);
         let event_authority = Pubkey::from([4; 32]);
         let program = Pubkey::from([5; 32]);
-        let fee_parameter = types::BaseFeeParameter { protocol_share: 0u16, base_factor: 0u16, base_fee_power_factor: 0u8 };
+        let fee_parameter = types::BaseFeeParameter {
+            protocol_share: 0u16,
+            base_factor: 0u16,
+            base_fee_power_factor: 0u8,
+        };
 
         let mut expected_data: Vec<u8> = vec![75, 168, 223, 161, 16, 195, 3, 47];
         borsh::BorshSerialize::serialize(&fee_parameter.clone(), &mut expected_data).unwrap();
@@ -4178,7 +4424,13 @@ mod tests {
         let signer = Pubkey::from([3; 32]);
         let event_authority = Pubkey::from([4; 32]);
         let program = Pubkey::from([5; 32]);
-        let fee_parameter = types::DynamicFeeParameter { filter_period: 0u16, decay_period: 0u16, reduction_factor: 0u16, variable_fee_control: 0u32, max_volatility_accumulator: 0u32 };
+        let fee_parameter = types::DynamicFeeParameter {
+            filter_period: 0u16,
+            decay_period: 0u16,
+            reduction_factor: 0u16,
+            variable_fee_control: 0u32,
+            max_volatility_accumulator: 0u32,
+        };
 
         let mut expected_data: Vec<u8> = vec![92, 161, 46, 246, 255, 189, 22, 22];
         borsh::BorshSerialize::serialize(&fee_parameter.clone(), &mut expected_data).unwrap();
@@ -4464,7 +4716,8 @@ mod tests {
 
         let mut expected_data: Vec<u8> = vec![148, 206, 42, 195, 247, 49, 103, 8];
         borsh::BorshSerialize::serialize(&reward_index, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -4531,7 +4784,8 @@ mod tests {
         let mut expected_data: Vec<u8> = vec![158, 201, 158, 189, 33, 93, 162, 103];
         borsh::BorshSerialize::serialize(&max_amount_x, &mut expected_data).unwrap();
         borsh::BorshSerialize::serialize(&max_amount_y, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -4596,7 +4850,8 @@ mod tests {
 
         let mut expected_data: Vec<u8> = vec![213, 155, 187, 34, 56, 182, 91, 240];
         borsh::BorshSerialize::serialize(&max_amount, &mut expected_data).unwrap();
-        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data).unwrap();
+        borsh::BorshSerialize::serialize(&remaining_accounts_info.clone(), &mut expected_data)
+            .unwrap();
 
         let expected_accounts = vec![
             AccountMeta::new(lb_pair, false),
@@ -4632,5 +4887,4 @@ mod tests {
         );
         assert_ix(&gen_ix, &expected_ix);
     }
-
 }

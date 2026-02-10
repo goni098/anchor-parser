@@ -504,17 +504,36 @@ mod tests {
         );
     }
 
-    fn assert_ix(actual: &solana_sdk::instruction::Instruction, expect: &solana_sdk::instruction::Instruction) {
+    fn assert_ix(
+        actual: &solana_sdk::instruction::Instruction,
+        expect: &solana_sdk::instruction::Instruction,
+    ) {
         assert_eq!(actual.program_id, expect.program_id, "program_id mismatch");
         assert_eq!(actual.data, expect.data, "data mismatch");
-        assert_eq!(actual.accounts.len(), expect.accounts.len(), "accounts len mismatch");
-        for (i, (g, e)) in actual.accounts.iter().zip(expect.accounts.iter()).enumerate() {
+        assert_eq!(
+            actual.accounts.len(),
+            expect.accounts.len(),
+            "accounts len mismatch"
+        );
+        for (i, (g, e)) in actual
+            .accounts
+            .iter()
+            .zip(expect.accounts.iter())
+            .enumerate()
+        {
             assert_eq!(g.pubkey, e.pubkey, "pubkey mismatch at account[{}]", i);
-            assert_eq!(g.is_signer, e.is_signer, "is_signer mismatch at account[{}]", i);
-            assert_eq!(g.is_writable, e.is_writable, "is_writable mismatch at account[{}]", i);
+            assert_eq!(
+                g.is_signer, e.is_signer,
+                "is_signer mismatch at account[{}]",
+                i
+            );
+            assert_eq!(
+                g.is_writable, e.is_writable,
+                "is_writable mismatch at account[{}]",
+                i
+            );
         }
     }
-
 
     // ── Instructions ────────────────────────────────────────────────
 

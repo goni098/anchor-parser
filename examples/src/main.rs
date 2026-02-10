@@ -1,8 +1,10 @@
+use anchor_parser::AccountDeserialize;
 use anchor_parser::declare_program;
 
 declare_program!(meteora_dlmm);
 
-fn main() {
+#[tokio::main]
+async fn main() {
     println!("Program ID: {}", meteora_dlmm::ID);
 
     // ── Build a swap instruction ────────────────────────────────────
@@ -23,7 +25,7 @@ fn main() {
             token_y_mint: solana_sdk::pubkey::Pubkey::from([11; 32]),
             oracle: solana_sdk::pubkey::Pubkey::from([12; 32]),
             host_fee_in: None,
-            user: user,
+            user,
             token_x_program: solana_sdk::pubkey::Pubkey::from([13; 32]),
             token_y_program: solana_sdk::pubkey::Pubkey::from([14; 32]),
             event_authority: solana_sdk::pubkey::Pubkey::from([15; 32]),
@@ -40,7 +42,6 @@ fn main() {
 
     // ── Parse events from transaction logs ──────────────────────────
 
-    // Using the generic Event enum to parse any program event
     let sample_logs: Vec<&str> = vec![
         "Program LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo invoke [1]",
         "Program log: some log",
@@ -52,7 +53,6 @@ fn main() {
 
     // ── Deserialize an account from raw data ────────────────────────
 
-    // Each account type has a DISCRIMINATOR and from_account_data method
     println!("\nAccount discriminators:");
     println!(
         "  LbPair:    {:?}",
@@ -62,14 +62,25 @@ fn main() {
         "  Position:  {:?}",
         meteora_dlmm::accounts::Position::DISCRIMINATOR
     );
-    println!(
-        "  BinArray:  {:?}",
-        meteora_dlmm::accounts::BinArray::DISCRIMINATOR
+
+    // ── Fetch account via RPC (client feature) ──────────────────────
+
+    let rpc = solana_client::nonblocking::rpc_client::RpcClient::new(
+        "https://api.mainnet-beta.solana.com".to_string(),
     );
-    println!(
-        "  Oracle:    {:?}",
-        meteora_dlmm::accounts::Oracle::DISCRIMINATOR
-    );
+
+    // fetch / fetch_multiple are available via AccountDeserialize trait
+    let address: solana_sdk::pubkey::Pubkey = "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo"
+        .parse()
+        .unwrap();
+
+    match meteora_dlmm::accounts::LbPair::fetch(&rpc, &address).await {
+        Ok(pair) => println!("\nFetched LbPair: active_id={}", pair.active_id),
+        Err(e) => println!("\nFetch failed (expected for program address): {e}"),
+    }
+
+    // Or use the standalone client functions:
+    // let pair = anchor_parser::client::fetch_account::<meteora_dlmm::accounts::LbPair>(&rpc, &address).await?;
 
     println!("\nDone!");
 }
