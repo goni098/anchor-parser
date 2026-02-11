@@ -35,7 +35,8 @@ pub fn gen_accounts_mod(idl: &Idl) -> proc_macro2::TokenStream {
                                 "Invalid account discriminator",
                             ));
                         }
-                        BorshDeserialize::try_from_slice(&data[#disc_len..])
+                        let mut reader = &data[#disc_len..];
+                        BorshDeserialize::deserialize_reader(&mut reader)
                     }
                 }
             }

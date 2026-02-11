@@ -4,7 +4,10 @@ declare_program!(pumpfun);
 
 #[cfg(test)]
 mod tests {
+    use crate::pumpfun::accounts::BondingCurve;
+
     use super::pumpfun;
+    use solana_client::nonblocking::rpc_client::RpcClient;
     use solana_sdk::pubkey::Pubkey;
 
     #[test]
@@ -1935,5 +1938,25 @@ mod tests {
         use pumpfun::types::OptionBool;
         let ob = OptionBool(true);
         assert!(ob.0);
+    }
+
+    // - onchain fetch
+    #[tokio::test]
+    async fn test_fetch_bonding_curve() {
+        let client = RpcClient::new("https://api.mainnet-beta.solana.com".to_string());
+        let bonding_curve_address =
+            solana_sdk::pubkey!("4cKijT6TkfwP7KBQ5R6ZcE6GGdaGRqCA5boTnvw61cWH");
+
+        let bonding_curve_data = client
+            .get_account_data(&bonding_curve_address)
+            .await
+            .unwrap();
+
+        let bonding_curve = BondingCurve::from_account_data(&bonding_curve_data).unwrap();
+
+        assert_eq!(
+            bonding_curve.creator,
+            solana_sdk::pubkey!("HeFU8pcfNU3UaN4MmpXBgPhTmxx9CKsnvsxgfp7vJmnn")
+        );
     }
 }

@@ -5,9 +5,8 @@ edition = "2024"
 publish = false
 
 [dependencies]
-anchor-parser = { path = "../anchor-parser", features = ["client"] }
+anchor-parser = { path = "../anchor-parser" }
 solana-sdk = "3"
-solana-client = "3"
 borsh = "1"
 bytemuck = { version = "1", features = ["derive"] }
 tokio = { version = "1", features = ["rt-multi-thread", "macros"] }

@@ -1,5 +1,3 @@
-#![cfg_attr(docsrs, feature(doc_cfg))]
-
 //! # anchor-parser
 //!
 //! [![Crates.io](https://img.shields.io/crates/v/anchor-parser.svg)](https://crates.io/crates/anchor-parser)
@@ -13,7 +11,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! anchor-parser = "0.1.3"
+//! anchor-parser = "0.1.4"
 //! ```
 //!
 //! Place an Anchor IDL JSON file at `<crate-root>/idls/<name>.json`, then:
@@ -49,32 +47,6 @@
 //! assert_eq!(MyAccount::DISCRIMINATOR, [/* 8 bytes */]);
 //! ```
 //!
-//! ## Fetching accounts via RPC
-//!
-//! *Requires the [`client`] feature.*
-//!
-//! Every account type gets `fetch` and `fetch_multiple` methods via the
-//! [`AccountDeserialize`] trait:
-//!
-//! ```ignore
-//! use anchor_parser::AccountDeserialize;
-//! use my_program::accounts::MyAccount;
-//!
-//! // Fetch a single account
-//! let account = MyAccount::fetch(&rpc, &address).await?;
-//!
-//! // Fetch multiple accounts at once
-//! let accounts = MyAccount::fetch_multiple(&rpc, &[addr1, addr2]).await?;
-//! ```
-//!
-//! Or use the standalone functions from the [`client`] module:
-//!
-//! ```ignore
-//! use anchor_parser::client;
-//!
-//! let account = client::fetch_account::<MyAccount>(&rpc, &address).await?;
-//! ```
-//!
 //! ## Parsing events
 //!
 //! ```ignore
@@ -102,12 +74,6 @@
 //!     min_out,
 //! );
 //! ```
-//!
-//! # Feature flags
-//!
-//! | Feature | Description |
-//! |---------|-------------|
-//! | `client` | Enables [`AccountDeserialize::fetch`] / [`AccountDeserialize::fetch_multiple`] and the [`client`] module via `solana-client` |
 
 /// Generates a module from an Anchor IDL JSON file.
 ///
@@ -131,28 +97,6 @@
 /// // Now use my_program::accounts, my_program::events, etc.
 /// ```
 pub use anchor_parser_macros::declare_program;
-
-/// Async RPC helpers for fetching and deserializing on-chain accounts.
-///
-/// Enable with the `client` feature:
-///
-/// ```toml
-/// [dependencies]
-/// anchor-parser = { version = "0.1.3", features = ["client"] }
-/// ```
-///
-/// # Example
-///
-/// ```ignore
-/// use anchor_parser::client;
-/// use my_program::accounts::MyAccount;
-///
-/// let account = client::fetch_account::<MyAccount>(&rpc, &address).await?;
-/// let accounts = client::fetch_accounts::<MyAccount>(&rpc, &[a1, a2]).await?;
-/// ```
-#[cfg(feature = "client")]
-#[cfg_attr(docsrs, doc(cfg(feature = "client")))]
-pub mod client;
 
 /// Trait implemented by all generated account types.
 ///
@@ -180,51 +124,6 @@ pub trait AccountDeserialize: Sized {
     /// Returns an error if the data is too short, the discriminator doesn't
     /// match, or deserialization fails.
     fn deserialize(data: &[u8]) -> Result<Self, std::io::Error>;
-
-    /// Fetch and deserialize a single account from an async RPC client.
-    ///
-    /// Requires the `client` feature.
-    ///
-    /// # Example
-    ///
-    /// ```ignore
-    /// use my_program::accounts::MyAccount;
-    ///
-    /// let account = MyAccount::fetch(&rpc, &address).await?;
-    /// ```
-    #[cfg(feature = "client")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "client")))]
-    fn fetch(
-        client: &solana_client::nonblocking::rpc_client::RpcClient,
-        address: &solana_sdk::pubkey::Pubkey,
-    ) -> impl std::future::Future<Output = Result<Self, solana_client::client_error::ClientError>>
-    {
-        crate::client::fetch_account::<Self>(client, address)
-    }
-
-    /// Fetch and deserialize multiple accounts in a single RPC call.
-    ///
-    /// Returns `None` for accounts that don't exist or fail deserialization.
-    ///
-    /// Requires the `client` feature.
-    ///
-    /// # Example
-    ///
-    /// ```ignore
-    /// use my_program::accounts::MyAccount;
-    ///
-    /// let accounts = MyAccount::fetch_multiple(&rpc, &[a1, a2]).await?;
-    /// ```
-    #[cfg(feature = "client")]
-    #[cfg_attr(docsrs, doc(cfg(feature = "client")))]
-    fn fetch_multiple(
-        client: &solana_client::nonblocking::rpc_client::RpcClient,
-        addresses: &[solana_sdk::pubkey::Pubkey],
-    ) -> impl std::future::Future<
-        Output = Result<Vec<Option<Self>>, solana_client::client_error::ClientError>,
-    > {
-        crate::client::fetch_accounts::<Self>(client, addresses)
-    }
 }
 
 #[doc(hidden)]

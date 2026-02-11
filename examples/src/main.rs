@@ -1,4 +1,3 @@
-use anchor_parser::AccountDeserialize;
 use anchor_parser::declare_program;
 
 declare_program!(meteora_dlmm);
@@ -62,25 +61,6 @@ async fn main() {
         "  Position:  {:?}",
         meteora_dlmm::accounts::Position::DISCRIMINATOR
     );
-
-    // ── Fetch account via RPC (client feature) ──────────────────────
-
-    let rpc = solana_client::nonblocking::rpc_client::RpcClient::new(
-        "https://api.mainnet-beta.solana.com".to_string(),
-    );
-
-    // fetch / fetch_multiple are available via AccountDeserialize trait
-    let address: solana_sdk::pubkey::Pubkey = "LBUZKhRxPF3XUpBCjp4YzTKgLccjZhTSDM9YuVaPwxo"
-        .parse()
-        .unwrap();
-
-    match meteora_dlmm::accounts::LbPair::fetch(&rpc, &address).await {
-        Ok(pair) => println!("\nFetched LbPair: active_id={}", pair.active_id),
-        Err(e) => println!("\nFetch failed (expected for program address): {e}"),
-    }
-
-    // Or use the standalone client functions:
-    // let pair = anchor_parser::client::fetch_account::<meteora_dlmm::accounts::LbPair>(&rpc, &address).await?;
 
     println!("\nDone!");
 }

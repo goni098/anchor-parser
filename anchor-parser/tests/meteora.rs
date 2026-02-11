@@ -4,6 +4,8 @@ declare_program!(meteora_damm_v2);
 
 #[cfg(test)]
 mod tests {
+    use crate::meteora_damm_v2::accounts::Pool;
+
     use super::meteora_damm_v2;
     use solana_client::{
         rpc_config::RpcTransactionConfig,
@@ -2960,5 +2962,27 @@ mod tests {
         assert_eq!(swap_event.current_timestamp, 1_770_656_918);
         assert_eq!(swap_event.reserve_a_amount, 13_441_336_246_749);
         assert_eq!(swap_event.reserve_b_amount, 200_238_277_714);
+    }
+
+    #[tokio::test]
+    async fn test_fecth_pool_account() {
+        let client = solana_client::nonblocking::rpc_client::RpcClient::new(
+            "https://api.mainnet-beta.solana.com".to_string(),
+        );
+
+        let pool_address = solana_sdk::pubkey!("8Pm2kZpnxD3hoMmt4bjStX2Pw2Z9abpbHzZxMPqxPmie");
+        let data = client.get_account_data(&pool_address).await.unwrap();
+
+        let pool = Pool::from_account_data(&data).unwrap();
+
+        assert_eq!(
+            pool.token_a_mint,
+            solana_sdk::pubkey!("So11111111111111111111111111111111111111112"),
+        );
+
+        assert_eq!(
+            pool.token_b_mint,
+            solana_sdk::pubkey!("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v"),
+        );
     }
 }

@@ -20,21 +20,12 @@ required.
 - **Constants** — Program constants with doc comments.
 - **Utils** — `Event` and `Account` wrapper enums for generic parsing across
   all program types.
-- **Client** *(optional)* — Async `fetch_account` / `fetch_accounts` via
-  `solana-client`.
 
 ## Installation
 
 ```toml
 [dependencies]
-anchor-parser = "0.1.3"
-```
-
-To enable the async RPC client ([`solana-client`](https://docs.rs/solana-client) dependency):
-
-```toml
-[dependencies]
-anchor-parser = { version = "0.1.3", features = ["client"] }
+anchor-parser = "0.1.4"
 ```
 
 ## Quick start
@@ -83,32 +74,6 @@ let account = MyAccount::from_account_data(&raw_bytes)?;
 
 // Check discriminator
 assert_eq!(MyAccount::DISCRIMINATOR, [/* 8 bytes */]);
-```
-
-### Fetch accounts via RPC
-
-> Requires the `client` feature.
-
-Every account type gets `fetch` and `fetch_multiple` methods via the
-`AccountDeserialize` trait:
-
-```rust
-use anchor_parser::AccountDeserialize;
-use my_program::accounts::MyAccount;
-
-// Fetch a single account
-let account = MyAccount::fetch(&rpc, &address).await?;
-
-// Fetch multiple accounts at once
-let accounts = MyAccount::fetch_multiple(&rpc, &[addr1, addr2]).await?;
-```
-
-Or use the standalone functions from the `client` module:
-
-```rust
-use anchor_parser::client;
-
-let account = client::fetch_account::<MyAccount>(&rpc, &address).await?;
 ```
 
 ### Events
